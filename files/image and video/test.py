@@ -1,0 +1,10 @@
+import cv2
+
+img = cv2.imread("galaxy.jpg",1)    #second param = color setting (-1 = color with alpha, 0 = b/w, 1 = color)
+print(img.shape)
+print(img)
+
+resized_image = cv2.resize(img,(int(img.shape[1]/2), int(img.shape[0]/2)))
+cv2.imshow("Galaxy",resized_image)
+cv2.waitKey(3000)
+cv2.destroyAllWindows()
