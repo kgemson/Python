@@ -10,12 +10,17 @@ from kivy.lang import Builder
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.uix.image import Image
 from kivy.uix.behaviors import ButtonBehavior
-import json, glob, random
-from datetime import datetime
+import glob, random
 from pathlib import Path
 from hoverable import HoverBehavior
+#from nodatabase import Database
+from database import Database
 
 Builder.load_file('design.kv')
+
+dbconn="dbname='mydb' user='postgres' password='budape5t' host='localhost' port='5432'"
+#db = Database()
+db = Database(dbconn)
 
 # Screens defined in kivy must be defined as classes within python file
 # Each inherits from 'Screen' class
@@ -27,16 +32,14 @@ class LoginScreen(Screen):
         self.ids.password.text = ""
         self.ids.login_feedback.text = ""
 
-        with open("users.json","r") as file:
-            users=json.load(file)
+        db.open_connection()
         
         # if blank values supplied, prompt for real values
         if uname=='' or pword=='':
             self.ids.login_feedback.text = "Please supply a userid and password"
-            self.manager.current = "login_screen_success"
         # if supplied, check if supplied username is a key in the users file
         else:
-            if uname in users and users[uname]['password'] == pword:
+            if db.check_user_credentials(uname,pword):
                 self.ids.login_feedback.text = ""
                 self.ids.username.text = ""
                 self.ids.password.text = ""
@@ -58,11 +61,10 @@ class SignupScreen(Screen):
             self.ids.password_confirm.text = ""
         else:
             if pword == pword_confirm: 
-                with open("users.json","r") as file:
-                    users=json.load(file)
+                db.open_connection()
 
                 # first, check to see if user already exists
-                if uname in users:
+                if db.user_exists(uname):
                     self.ids.login_feedback.text = "Username already exists - please try another"
                     self.ids.username.text = ""
                     self.ids.password.text = ""
@@ -70,11 +72,7 @@ class SignupScreen(Screen):
                 else:
                     #add a new user to this list as a dictionary element with key 'uname'
                     # take current time from 'datetime' class and format the output
-                    users[uname] = {'username': uname, 'password': pword,
-                        'created': datetime.now().strftime("%Y-%m-%d %H-%M-%S")}
-
-                    with open("users.json","w") as file:
-                        json.dump(users, file)
+                    db.add_new_user(uname, pword)
                     
                     # on success, switch to confirmation screen
                     self.ids.login_feedback.text = ""
