@@ -1,0 +1,5 @@
+	fname	sname	instrument	initials
+0	John	Lennon	Guitar	J.L.
+1	Paul	McCartney	Bass	P.M.
+2	George	Harrison	Guitar	G.H.
+3	Ringo	Starr	Drums	R.S.

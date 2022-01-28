@@ -1,49 +1,52 @@
-from time import thread_time_ns
 from kivymd.uix.screen import MDScreen
 from kivymd.app import MDApp
-from kivy.uix.image import Image
-from kivymd.uix.button import MDFillRoundFlatButton
-from kivymd.uix.textfield import MDTextField
-from kivymd.uix.label import MDLabel
-from kivymd.uix.toolbar import MDToolbar
+from kivy.lang.builder import Builder
+#from kivy.uix.image import Image
+#from kivymd.uix.button import MDFillRoundFlatButton
+#from kivymd.uix.textfield import MDTextField
+#from kivymd.uix.label import MDLabel
+#from kivymd.uix.toolbar import MDToolbar
 
-class ConverterApp(MDApp):
+class MainScreen(MDScreen):
+    state = 0
+
     def flip(self):
         if self.state == 0:
             self.state = 1
-            self.toolbar.title = "Decimal to binary converter"
-            self.input.hint_text = "Enter a decimal number: "
-            self.input.text = ""
-            self.label.text = ""
-            self.converted.text = ""
-     
+            self.ids.toolbar.title = "Decimal to binary converter"
+            self.ids.toplabel.text = "Enter a decimal number:"
+            self.ids.input.hint_text = " : "
+            self.ids.input.text = ""
+            self.ids.bottomlabel.text = ""
+            self.ids.converted.text = ""
         else:
             self.state = 0
-            self.toolbar.title = "Binary to decimal converter"
-            self.input.hint_text = "Enter a binary number: "
-            self.input.text = ""
-            self.label.text = ""
-            self.converted.text = ""
+            self.ids.toolbar.title = "Binary to decimal converter"
+            self.ids.toplabel.text = "Enter a binary number:"
+            self.ids.input.hint_text = " : "
+            self.ids.input.text = ""
+            self.ids.bottomlabel.text = ""
+            self.ids.converted.text = ""
 
-    def convert(self, args): #'Button' code always requires two parms - 'self' and an 'args'
+    def convert(self): #'Button' code always requires two parms - 'self' and an 'args' (apparently not true if using .kv file)
         # need to cater for user inputting invalid data
         try:
             # need to distinguish between floating point and whole numbers. First, whole numbers...
-            if '.' not in self.input.text:
+            if '.' not in self.ids.input.text:
                 if self.state == 0:
                     #convert binary to decimal
-                    val = int(self.input.text,2)
-                    self.label.text = "In decimal is: "
-                    self.converted.text = str(val)
+                    val = int(self.ids.input.text,2)
+                    self.ids.bottomlabel.text = "in decimal is: "
+                    self.ids.converted.text = str(val)
                 else:
                     #convert decimal to binary
-                    val = bin(int(self.input.text))[2:]  # bin values always start with '0b', so need to skip first two chars
-                    self.label.text = "In binary is: "
-                    self.converted.text = val
+                    val = bin(int(self.ids.input.text))[2:]  # bin values always start with '0b', so need to skip first two chars
+                    self.ids.bottomlabel.text = "in binary is: "
+                    self.ids.converted.text = val
 
             # then floating point numbers...
             else:
-                whole,frac = self.input.text.split('.')
+                whole,frac = self.ids.input.text.split('.')
                 
                 if self.state == 0 :
                     #convert binary to decimal
@@ -55,8 +58,8 @@ class ConverterApp(MDApp):
                         # (index starts at zero so need to add 1)
                         floating += int(digit)*2**(-(idx+1))
 
-                    self.label.text = "In decimal is: "
-                    self.converted.text = str(whole + floating)
+                    self.ids.bottomlabel.text = "In decimal is: "
+                    self.ids.converted.text = str(whole + floating)
                 else:
                     #convert decimal to binary
                     decimal_places = 10 # need to set max decimal places so we don't get infinite values, e.g. 1/3
@@ -79,65 +82,22 @@ class ConverterApp(MDApp):
                             floating.append('1')
                             break
 
-                    self.label.text = "In binary is: "
-                    self.converted.text = str(whole +"."+"".join(floating))
+                    self.ids.bottomlabel.text = "In binary is: "
+                    self.ids.converted.text = str(whole +"."+"".join(floating))
         except ValueError:
-            self.converted.text = ""
+            self.ids.converted.text = ""
             if self.state == 0:
-                self.label.text = "Please enter a valid binary number"
+                self.ids.bottomlabel.text = "Please enter a valid binary number"
+                self.ids.input.text = ""
             else:
-                self.label.text = "Please enter a valid decimal number"
-
-
+                self.ids.bottomlabel.text = "Please enter a valid decimal number"
+                self.ids.input.text = ""
+    
+class ConverterApp(MDApp):
     def build(self):
-        screen = MDScreen()
-        self.state = 0
-
-        #UI Widgets go here
-        self.toolbar = MDToolbar(title="Binary To Decimal converter")
-        self.toolbar.pos_hint = {"top": 1}
-        self.toolbar.right_action_items = [["rotate-3d-variant", lambda x:self.flip()]]
-        screen.add_widget(self.toolbar)
-        
-        screen.add_widget(Image(source="logo.png",pos_hint = {"center_x": 0.5,"center_y": 0.7}))
-
-        self.input = MDTextField(
-            hint_text = "Enter a binary number: ",
-            text = "",
-            halign="center",
-            size_hint=(0.8,1),
-            pos_hint = {"center_x": 0.5,"center_y": 0.45},
-            font_size = 45
-        )
-        screen.add_widget(self.input)
-
-        self.label = MDLabel(
-            halign="center",
-            pos_hint = {"center_x": 0.5,"center_y": 0.35},
-            theme_text_color = "Secondary"
-        )
-
-        self.converted = MDLabel(
-            halign="center",
-            pos_hint = {"center_x": 0.5,"center_y": 0.3},
-            theme_text_color = "Primary",
-            font_style = "H3",
-            font_size = 45
-        )
-        
-        screen.add_widget(self.label)
-        screen.add_widget(self.converted)
-
-        #Convert button
-        screen.add_widget(MDFillRoundFlatButton(
-                text="Convert",
-                font_size = 17,
-                pos_hint = {"center_x": 0.5,"center_y": 0.15},
-                on_press = self.convert
-            )
-        )
-
-        return screen        
+        self.theme_cls.theme_style = "Dark"
+        self.theme_cls.primary_palette = "BlueGray"
+        return Builder.load_file('Converter.kv')
 
 if __name__ == '__main__':
     ConverterApp().run()

@@ -1,0 +1,52 @@
+MainScreen:
+    MDBoxLayout:
+        orientation: 'vertical'
+        
+        MDScreen:
+            MDToolbar:
+                id: toolbar
+                title: "Binary To Decimal converter"
+                pos_hint: {"top": 1}
+                right_action_items: [["rotate-3d-variant", lambda x:root.flip()]]
+            
+            MDLabel:
+                id: toplabel
+                halign: "center"
+                text: "Enter a binary number: "
+                pos_hint: {"center_x": 0.5,"center_y": 0.75}
+                theme_text_color: "Primary"
+                font_size: 32
+
+            MDTextFieldRound:
+                id: input
+                hint_text: " : "
+                text: ""
+                halign: "center"
+                size_hint: (0.8,None)
+                pos_hint: {"center_x": 0.5,"center_y": 0.6}
+                font_size: 28
+
+            MDLabel:
+                id: bottomlabel
+                halign: "center"
+                pos_hint: {"center_x": 0.5,"center_y": 0.42}
+                theme_text_color: "Secondary"
+                font_size: 28
+
+            MDLabel:
+                id: converted
+                halign: "center"
+                pos_hint: {"center_x": 0.5,"center_y": 0.32}
+                theme_text_color: "Primary"
+                font_style: "H5"
+                font_size: 42
+
+            MDFillRoundFlatButton:
+                text: "Convert"
+                font_size: 18
+                pos_hint: {"center_x": 0.5,"center_y": 0.2}
+                on_press: root.convert()
+            
+            MDToolbar:
+                id: bottom_toolbar
+                pos_hint: {"bottom": 1}
