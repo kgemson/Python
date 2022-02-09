@@ -6,6 +6,10 @@ from kivy.lang.builder import Builder
 #from kivymd.uix.textfield import MDTextField
 #from kivymd.uix.label import MDLabel
 #from kivymd.uix.toolbar import MDToolbar
+from kivy.core.window import Window
+
+# set window size
+#Window.size=(1080,2340)
 
 class MainScreen(MDScreen):
     state = 0

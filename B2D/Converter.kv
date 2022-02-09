@@ -1,5 +1,6 @@
 MainScreen:
     MDBoxLayout:
+        size_hint: 1, 1
         orientation: 'vertical'
         
         MDScreen:
@@ -15,7 +16,7 @@ MainScreen:
                 text: "Enter a binary number: "
                 pos_hint: {"center_x": 0.5,"center_y": 0.75}
                 theme_text_color: "Primary"
-                font_size: 32
+                font_size: 42
 
             MDTextFieldRound:
                 id: input
@@ -24,14 +25,14 @@ MainScreen:
                 halign: "center"
                 size_hint: (0.8,None)
                 pos_hint: {"center_x": 0.5,"center_y": 0.6}
-                font_size: 28
+                font_size: 42
 
             MDLabel:
                 id: bottomlabel
                 halign: "center"
                 pos_hint: {"center_x": 0.5,"center_y": 0.42}
                 theme_text_color: "Secondary"
-                font_size: 28
+                font_size: 32
 
             MDLabel:
                 id: converted
@@ -39,11 +40,11 @@ MainScreen:
                 pos_hint: {"center_x": 0.5,"center_y": 0.32}
                 theme_text_color: "Primary"
                 font_style: "H5"
-                font_size: 42
+                font_size: 48
 
             MDFillRoundFlatButton:
                 text: "Convert"
-                font_size: 18
+                font_size: 32
                 pos_hint: {"center_x": 0.5,"center_y": 0.2}
                 on_press: root.convert()
             
