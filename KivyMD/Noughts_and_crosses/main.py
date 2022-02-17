@@ -7,7 +7,8 @@ class MainApp(MDApp):
         self.title = "Noughts & Crosses"
         self.theme_cls.theme_style = "Dark"
         self.theme_cls.primary_palette = "BlueGray"
-        return Builder.load_file('layout.kv')
+#        return Builder.load_file('layout.kv')
+        return super().build()
 
     to_start = "X"
     game_over = False
@@ -52,7 +53,7 @@ class MainApp(MDApp):
             self.root.ids.button7.disabled == True and \
             self.root.ids.button8.disabled == True and \
             self.root.ids.button9.disabled == True:
-                self.root.ids.score.text = "It's a tie - click 'Restart' to play again"
+                self.root.ids.score.text = "No winner!"
                 self.game_over = True
 
     # check to see if game has been won, and end game if so
@@ -136,5 +137,5 @@ class MainApp(MDApp):
             self.pick_O_square()
             self.root.ids.score.text = "X's turn!"
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     MainApp().run()

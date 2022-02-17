@@ -1,0 +1,547 @@
+MDBoxLayout:
+    orientation: "vertical"
+    size: root.width, root.height
+
+    MDToolbar:
+        id: toolbar
+        title: "Wordle-type thing"
+        pos_hint: {"top": 1}
+        right_action_items: [["theme-light-dark", lambda x:app.change_theme()]]
+
+    MDSeparator:
+
+    MDGridLayout:
+        size_hint: .8, .7
+        pos_hint: {'center_x': .5, 'center_y': .5}
+        cols: 5
+        rows: 6
+        spacing: 5,5
+        padding: 5,5
+        
+        MDLabel:
+            id: letter1
+            background_color: (.7,.7,.7,1)
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            size_hint_x: .2
+            font_size: "24sp"
+            halign: "center"
+        MDLabel:
+            id: letter2
+            background_color: (.7,.7,.7,1)
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            size_hint_x: .2
+            font_size: "24sp"
+            halign: "center"
+        MDLabel:
+            id: letter3
+            background_color: (.7,.7,.7,1)
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            size_hint_x: .2
+            font_size: "24sp"
+            halign: "center"
+        MDLabel:
+            id: letter4
+            background_color: (.7,.7,.7,1)
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            size_hint_x: .2
+            font_size: "24sp"
+            halign: "center"
+        MDLabel:
+            id: letter5
+            background_color: (.7,.7,.7,1)
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            size_hint_x: .2
+            font_size: "24sp"
+            halign: "center"
+        MDLabel:
+            id: letter6
+            background_color: (.7,.7,.7,1)
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            size_hint_x: .2
+            font_size: "24sp"
+            halign: "center"
+        MDLabel:
+            id: letter7
+            background_color: (.7,.7,.7,1)
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            size_hint_x: .2
+            font_size: "24sp"
+            halign: "center"
+        MDLabel:
+            id: letter8
+            background_color: (.7,.7,.7,1)
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            size_hint_x: .2
+            font_size: "24sp"
+            halign: "center"
+        MDLabel:
+            id: letter9
+            background_color: (.7,.7,.7,1)
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            size_hint_x: .2
+            font_size: "24sp"
+            halign: "center"
+        MDLabel:
+            id: letter10
+            background_color: (.7,.7,.7,1)
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            size_hint_x: .2
+            font_size: "24sp"
+            halign: "center"
+        MDLabel:
+            id: letter11
+            background_color: (.7,.7,.7,1)
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            size_hint_x: .2
+            font_size: "24sp"
+            halign: "center"
+        MDLabel:
+            id: letter12
+            background_color: (.7,.7,.7,1)
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            size_hint_x: .2
+            font_size: "24sp"
+            halign: "center"
+        MDLabel:
+            id: letter13
+            background_color: (.7,.7,.7,1)
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            size_hint_x: .2
+            font_size: "24sp"
+            halign: "center"
+        MDLabel:
+            id: letter14
+            background_color: (.7,.7,.7,1)
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            size_hint_x: .2
+            font_size: "24sp"
+            halign: "center"
+        MDLabel:
+            id: letter15
+            background_color: (.7,.7,.7,1)
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            size_hint_x: .2
+            font_size: "24sp"
+            halign: "center"
+        MDLabel:
+            id: letter16
+            background_color: (.7,.7,.7,1)
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            size_hint_x: .2
+            font_size: "24sp"
+            halign: "center"
+        MDLabel:
+            id: letter17
+            background_color: (.7,.7,.7,1)
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            size_hint_x: .2
+            font_size: "24sp"
+            halign: "center"
+        MDLabel:
+            id: letter18
+            background_color: (.7,.7,.7,1)
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            size_hint_x: .2
+            font_size: "24sp"
+            halign: "center"
+        MDLabel:
+            id: letter19
+            background_color: (.7,.7,.7,1)
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            size_hint_x: .2
+            font_size: "24sp"
+            halign: "center"
+        MDLabel:
+            id: letter20
+            background_color: (.7,.7,.7,1)
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            size_hint_x: .2
+            font_size: "24sp"
+            halign: "center"
+        MDLabel:
+            id: letter21
+            background_color: (.7,.7,.7,1)
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            size_hint_x: .2
+            font_size: "24sp"
+            halign: "center"
+        MDLabel:
+            id: letter22
+            background_color: (.7,.7,.7,1)
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            size_hint_x: .2
+            font_size: "24sp"
+            halign: "center"
+        MDLabel:
+            id: letter23
+            background_color: (.7,.7,.7,1)
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            size_hint_x: .2
+            font_size: "24sp"
+            halign: "center"
+        MDLabel:
+            id: letter24
+            background_color: (.7,.7,.7,1)
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            size_hint_x: .2
+            font_size: "24sp"
+            halign: "center"
+        MDLabel:
+            id: letter25
+            background_color: (.7,.7,.7,1)
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            size_hint_x: .2
+            font_size: "24sp"
+            halign: "center"
+        MDLabel:
+            id: letter26
+            background_color: (.7,.7,.7,1)
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            size_hint_x: .2
+            font_size: "24sp"
+            halign: "center"
+        MDLabel:
+            id: letter27
+            background_color: (.7,.7,.7,1)
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            size_hint_x: .2
+            font_size: "24sp"
+            halign: "center"
+        MDLabel:
+            id: letter28
+            background_color: (.7,.7,.7,1)
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            size_hint_x: .2
+            font_size: "24sp"
+            halign: "center"
+        MDLabel:
+            id: letter29
+            background_color: (.7,.7,.7,1)
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            size_hint_x: .2
+            font_size: "24sp"
+            halign: "center"
+        MDLabel:
+            id: letter30
+            background_color: (.7,.7,.7,1)
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            size_hint_x: .2
+            font_size: "24sp"
+            halign: "center"
+    MDLabel:
+        id: feedback
+        size_hint: 1, .1
+        text: ""
+        halign: "center"
+    MDGridLayout:
+        cols: 5
+		rows: 7
+        size_hint: .85, .4
+        spacing: 3,3
+        pos_hint: {'center_x': .5, 'center_y': .35}
+
+        # Row
+        MDFillRoundFlatButton:
+            font_size: 16
+            id: button1
+            text: "A"
+            on_release: app.write_label("A")
+            text_color: (1, 1, 1, 1)
+            md_bg_color: (0, 1, 1, 1)
+            background_normal: ''
+        MDFillRoundFlatButton:
+            id: button2
+            font_size: 16
+            text: "B"
+            on_release: app.write_label("B")
+        MDFillRoundFlatButton:
+            id: button3 
+            font_size: 16
+            text: "C"
+            on_release: app.write_label("C")
+        MDFillRoundFlatButton:
+            id: button4
+            font_size: 16
+            text: "D"
+            on_release: app.write_label("D")
+        MDFillRoundFlatButton:
+            id: button5
+            font_size: 16
+            text: "E"
+            on_release: app.write_label("E")
+       # Row
+        MDFillRoundFlatButton:
+            id: button6
+            font_size: 16
+            text: "F"
+            on_release: app.write_label("F")
+        MDFillRoundFlatButton:
+            id: button7
+            font_size: 16
+            text: "G"
+            on_release: app.write_label("G")
+        MDFillRoundFlatButton:
+            id: button8
+            font_size: 16
+            text: "H"
+            on_release: app.write_label("H")
+        MDFillRoundFlatButton:
+            id: button9
+            font_size: 16
+            text: "I"
+            on_release: app.write_label("I")
+        MDFillRoundFlatButton:
+            id: button10
+            font_size: 16
+            text: "J"
+            on_release: app.write_label("J")
+        # Row
+        MDFillRoundFlatButton:
+            id: button11
+            font_size: 16
+            text: "K"
+            on_release: app.write_label("K")
+        MDFillRoundFlatButton:
+            id: button12
+            font_size: 16
+            text: "L"
+            on_release: app.write_label("L")
+        MDFillRoundFlatButton:
+            id: button13
+            font_size: 16
+            text: "M"
+            on_release: app.write_label("M")
+        MDFillRoundFlatButton:
+            id: button14
+            font_size: 16
+            text: "N"
+            on_release: app.write_label("N")
+        MDFillRoundFlatButton:
+            id: button15
+            font_size: 16
+            text: "O"
+            on_release: app.write_label("O")
+        # Row
+        MDFillRoundFlatButton:
+            id: button16
+            font_size: 16
+            text: "P"
+            on_release: app.write_label("P")
+        MDFillRoundFlatButton:
+            id: button17
+            font_size: 16
+            text: "Q"
+            on_release: app.write_label("Q")
+        MDFillRoundFlatButton:
+            id: button18
+            font_size: 16
+            text: "R"
+            on_release: app.write_label("R")
+        MDFillRoundFlatButton:
+            id: button19
+            font_size: 16
+            text: "S"
+            on_release: app.write_label("S")
+        MDFillRoundFlatButton:
+            id: button20
+            font_size: 16
+            text: "T"
+            on_release: app.write_label("T")
+        # Row
+        MDFillRoundFlatButton:
+            id: button21
+            font_size: 16
+            text: "U"
+            on_release: app.write_label("U")
+        MDFillRoundFlatButton:
+            id: button22
+            font_size: 16
+            text: "V"
+            on_release: app.write_label("V")
+        MDFillRoundFlatButton:
+            id: button23
+            font_size: 16
+            text: "W"
+            on_release: app.write_label("W")
+        MDFillRoundFlatButton:
+            id: button24
+            font_size: 16
+            text: "X"
+            on_release: app.write_label("X")
+        MDFillRoundFlatButton:
+            id: button25
+            font_size: 16
+            text: "Y"
+            on_release: app.write_label("Y")
+        # Row
+        MDFillRoundFlatButton:
+            id: button26
+            font_size: 16
+            text: "Z"
+            on_release: app.write_label("Z")
+        MDFillRoundFlatButton:
+            font_size: 16
+            text: "<-"
+            on_release: app.backspace()
+        MDFillRoundFlatButton:
+            font_size: 16
+            text: "Enter"
+            on_release: app.enter()
+        MDFillRoundFlatButton:
+            id: restart_button
+            font_size: 16
+            text: "Restart"
+            on_release: app.play_again()
+            disabled: 'True'
+    MDLabel:
+        size_hint: .85, None
