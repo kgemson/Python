@@ -1,8 +1,10 @@
 from kivy.lang import Builder
 from kivymd.app import MDApp
 from wordle import WordCheck
-import pandas as pd
 from spellchecker import SpellChecker
+#from csv import reader
+import random
+#from kivy.core.spelling import Spelling
 
 class MainApp(MDApp):
     def build(self):
@@ -42,9 +44,13 @@ class MainApp(MDApp):
 
     # randomly select a word from answer file
     def get_answer_from_file(self):
-        answerlist = pd.read_csv("answerlist.csv",header=None)
-        answerlist = answerlist.sample(n=1)
-        self.answer = answerlist.values[0][0]
+        #answerlist = pd.read_csv("answerlist.csv",header=None)
+        #answerlist = answerlist.sample(n=1)
+        #self.answer = answerlist.values[0][0]
+
+        with open("answerlist.csv", "r") as csv_file:
+            words = csv_file.read().split()
+            self.answer = random.choice(words)
 
     # function to print each submitted letter onto next available label
     def write_label(self,mytext):
@@ -71,6 +77,9 @@ class MainApp(MDApp):
         self.invalid_word = False
         self.root.ids.restart_button.disabled = True
         self.root.ids.feedback.text = ""
+
+        # get a new word
+        self.get_answer_from_file()
 
     # function to clear letters - only want to go back as far as start of current line
     def backspace(self):
@@ -121,18 +130,30 @@ class MainApp(MDApp):
             elif check_value[check_index] =='@':
                 self.label_array[i].background_color = (1, 191/255, 0, 1)
             else:
-                # letter not in word, so change bgcolor to dark grey and set
-                # colour of button with that text value to different colour
+                # letter not in word, so change bgcolor to dark grey 
+                self.label_array[i].background_color = (.3,.3,.3,1)
+
+                # then set colour of button with that text value to different colour
                 for j in range(0,26):
                     if self.button_array[j].text == self.guess[check_index].upper():
                         self.button_array[j].text_color = (.7, .7, .7, 1)
-                self.label_array[i].background_color = (.3,.3,.3,1)
+
+        # After going through whole or guess, reset bgcolor / text colour of buttons to original values if any letters 
+        # are found on the word (i.e. if background is green or yellow). This is required as guessing same letter more 
+        # than once can cause buttons to be incorrectly greyed out
+        for k in range((self.guesses_submitted * 5) - 5, self.guesses_submitted * 5):
+            if self.label_array[k].background_color == [102/255, 205/255, 0, 1] or self.label_array[k].background_color == [1, 191/255, 0, 1]:
+                # change colour of button with that text value to different colour
+                for l in range(0,26):
+                    if self.button_array[l].text == self.label_array[k].text.upper():
+                        self.button_array[l].text_color = (1, 1, 1, 1)
         
         # if all letters are matched, display message and end game
         if check_value == 'XXXXX':
             self.game_over = True
             self.root.ids.feedback.text = "You win!"
             self.root.ids.restart_button.disabled = False
+            
         # otherwise check to see if all guesses are exhausted and end game if so
         else:
             if self.guesses_submitted == self.max_guesses:
@@ -142,6 +163,7 @@ class MainApp(MDApp):
 
     def check_guess_valid(self,guess):
         if guess in self.spell:
+        #if self.spell.check(guess):
             return True
         else:
             return False
